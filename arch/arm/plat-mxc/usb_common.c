@@ -337,8 +337,11 @@ static void usbh1_set_utmi_xcvr(void)
 	 * the ULPI transceiver to reset too.
 	 */
 	msleep(100);
-	
-#if 1
+
+	// MJ: This code appears to prevent the USB port from behaving as a host
+	//     port properly.  It was #if 1 in the original code, but I have
+	//     removed that which has enabled the USB serial adapter to operate
+#if 0
 	// force suspend otg port 
 	printk ("[%s-%d] %s() \n",__FILE__,__LINE__,__func__);
 	USB_PHY_CTR_FUNC |= USB_UTMI_PHYCTRL_OC_DIS;
